@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASHION HUB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header img {
+            width: 50px; /* Adjust as needed */
+            height: auto;
+        }
+        header .icons {
+            display: flex;
+            align-items: center;
+        }
+        header .icons img {
+            width: 30px; /* Adjust as needed */
+            height: auto;
+            margin-left: 10px; /* Space between icons */
+            cursor: pointer;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+        .container {
+            padding: 20px;
+            text-align: center; /* Center text horizontally */
+        }
+        .hidden {
+            display: none;
+        }
+        .search-bar {
+            margin-top: 20px;
+        }
+        .categories {
+            margin-top: 20px;
+        }
+        .categories h2 {
+            margin-bottom: 10px;
+        }
+        .category-item {
+            margin-right: 20px;
+            display: inline-block;
+        }
+        .category-item a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .item-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .item {
+            margin: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .item img {
+            width: 150px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 8px;
+        }
+        .item p {
+            margin: 5px 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #333;
+        }
+        .category-controls {
+            margin-top: 20px;
+        }
+        .category-controls button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .photo {
+            margin-top: 20px;
+        }
+        .photo img {
+            width: 100%; /* Full width */
+            max-width: 600px; /* Max width */
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto; /* Center the image */
+        }
+        .map {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .map iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="data:image/png;base64,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" alt="Sample Logo">
+        <h1>FASHION HUB</h1>
+        <nav>
+            <a href="#home" onclick="showPage('home')">Home</a>
+            <a href="#about" onclick="showPage('about')">About</a>
+            <a href="#contact" onclick="showPage('contact')">Contact</a>
+            
+        </nav>
+        <div class="icons">
+            <img src="data:image/png;base64,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" alt="Wishlist Icon" class="wishlist">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL4AAACUCAMAAAAanWP/AAAAZlBMVEX///8AAAArKyvKysqpqan8/Pzs7Ozd3d2goKDn5+fx8fEaGhrg4OC7u7v09PRBQUHT09NnZ2eIiIiSkpI0NDQ6OjpwcHB7e3uzs7NQUFDDw8MiIiKBgYEKCgphYWFHR0dZWVkTExOQLfF2AAADqklEQVR4nO2a246jMAyGk0A4TMuZciwF3v8l1w7tzOxotyVIVTySvysuEul3ajuOXSEYhmEYhmEYhmEYhmEYhmEYhmEYhmEYhnkDZ/kgcS3lCPGn/Cp1reUAX/KbwLWWA8R1lmVzPUmZxa61HMabpZzOrlUc5lyA94SuVRxGl5h6tGsZh4l+a+rZ6EYpiw/XKg4zZFJefmPm3Ahv4D2/V76+ovNHgO/7XdclyTB4Xp6H4TkOPlLyQV193r7TehqVqi/Z3PfL7VY0TXstywqINvPQOjAuB+PI2Bad5B7QttHYhsYthTGudR/zyWWX/H8yui83wgV0DN7QdX4UVeW1bYrb0s8XpcbT9EJ+4/70dQM64BS11mmafnwEQRAjZ0OI5N6QgHHVw7g5u6hxhW0dAe83ZcOLNVpv1oF5aB+aiBmLQrGEsXu1Pkas9WoKpWpXSzlbyx9qIu+csAc3sJbvE3F9obHkt00hKUZM/hY9trQ7YvcnOaTbjELkQtmAsWu5Z4A6u6Xg+hC7CmLXdg8V14ccCM91abclwKzvvUeOLXqxjt0cLJ5puL4QjXXsDlANXWm4PsTuahm7mkzWRzB2M5sNMfxe6/AuObaEF8vYzWFDT+PSAnRvGbuDJOT6QtzsYjfF3pb/Pjm2lJBIyv3LY6iSToSGGthq6/cvD0dKrg96IPWs+5d7tFxfiItN7KbYGoreKceW3iZ2Y1g9EnL9reTfHbs4k6Tk+vD0g7Jh2bvYZH33HZ5vhPBimdRORmquL8Ro2R3sXAv+m9lOPi3X32JXvmppftESm4ZhAd+4FnEcTIa2z3VKgPyaVDK0o5ZSEWkdHAGefydiyXw3aZhD6pluubeTPKbyTgfCyDLty7XoyBTM3mIp3hhQuh/LGUx//wAlifNPsV0piyjCNr+ccbj+X8wIe7z6FVq8kvgfDf4nQ0Yh3FzYP3hezODdrJJAaIx02VBwnwgqncKUMCmc//o0ecKhT5X5yuHzRKFuQ4e431f4BK+erYUX/bh5vHnvUpCPQ6r7gDOUL56M8CoY758REfl4jL4JQtM3fnX6d48JWiLycSqtjEcE6BtPe3/YTCzMVwK7agrziTNeWlkCijAFLU8H5RgcU5GLoFL4Q5GoUKMVpJyUwv/1vKrazA03KoVbagq+I7bZ0J32xVL97dYl06gqH4qexq1BP4o7RWa4IkTcgi+rfV1Xb1nllEXE3uoMwzAMwzAMwzAMwzAMwzAMwzAMwzAM84M/Y5QpYX7cuhYAAAAASUVORK5CYII=" alt="Cart Icon" class="cart">
+        </div>
+    </header>
+    
+    <div id="home" class="container">
+        <h2>WELCOME TO FASHION HUB</h2>
+        <p>YOUR STYLE YOUR FASHION.</p>
+
+        <!-- Sample Photo for Home -->
+        <div class="photo">
+            <img src="https://via.placeholder.com/600x400" alt="Delicious Indian Food">
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button type="button">Search</button>
+        </div>
+        
+        <!-- Categories Section -->
+        <div class="categories">
+            <h2>Categories</h2>
+            <div class="category-item"><a href="#men" onclick="showCategory('men')">Men</a></div>
+            <div class="category-item"><a href="#women" onclick="showCategory('women')">Women</a></div>
+            <div class="category-item"><a href="#kids" onclick="showCategory('kids')">Kids</a></div>
+            <div class="category-item"><a href="#shoes" onclick="showCategory('shoes')">Shoes</a></div>
+        </div>
+    </div>
+    
+    <div id="about" class="container hidden">
+        <h2>About Us</h2>
+        <p>At [FASHION HUB], we believe that fashion is a powerful way to express individuality. Our curated collection combines the latest trends with timeless styles, offering high-quality clothing that fits every occasion and personal taste. Whether you're seeking elegant essentials for special events or comfortable pieces for everyday wear, our store is dedicated to helping you find fashion that not only enhances your wardrobe but also empowers you to embrace your unique style with confidence.</p>
+
+        <!-- Sample Photo for About -->
+        <div class="photo">
+            <img src="https://via.placeholder.com/600x400" alt="Our Restaurant">
+        </div>
+    </div>
+    
+    <div id="contact" class="container hidden">
+        <h2>Contact Us</h2>
+        <p>Get in touch with us through our contact page for any inquiries or reservations.</p>
+        <p>Address: 1234 Indian Street, Flavor Town, USA</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Email: contact@indianfoods.com</p>
+
+        <!-- Map -->
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.515388787242!2d-122.40430458468132!3d37.77492977975968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085806e3ec16b3f%3A0x22d80c3d00b97ff!2sSan%20Francisco%2C%20CA%2094129!5e0!3m2!1sen!2sus!4v1673420635562!5m2!1sen!2sus" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <div id="appetizers" class="container hidden">
+        <h2>Appetizers</h2>
+        <div class="item-list">
+            <div class="item">
+                <img src="https://via.placeholder.com/150" alt="Appetizer 1">
+                <p>Appetizer 1</p>
+                <p class="price">$5.99</p>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/150" alt="Appetizer 2">
+                <p>Appetizer 2</p>
+                <p class="price">$6.99</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="main-courses" class="container hidden">
+        <h2>Main Courses</h2>
+        <div class="item-list">
+            <div class="item">
+                <img src="https://via.placeholder.com/150" alt="Main Course 1">
+                <p>Main Course 1</p>
+                <p class="price">$12.99</p>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/150" alt="Main Course 2">
+                <p>Main Course 2</p>
+                <p class="price">$14.99</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="desserts" class="container hidden">
+        <h2>Desserts</h2>
+        <div class="item-list">
+            <div class="item">
+                <img src="https://via.placeholder.com/150" alt="Dessert 1">
+                <p>Dessert 1</p>
+                <p class="price">$4.99</p>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/150" alt="Dessert 2">
+                <p>Dessert 2</p>
+                <p class="price">$5.99</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="drinks" class="container hidden">
+        <h2>Drinks</h2>
+        <div class="item-list">
+            <div class="item">
+                <img src="https://via.placeholder.com/150" alt="Drink 1">
+                <p>Drink 1</p>
+                <p class="price">$2.99</p>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/150" alt="Drink 2">
+                <p>Drink 2</p>
+                <p class="price">$3.99</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Controls -->
+    <div class="category-controls">
+        <button onclick="showPreviousCategory()">Previous</button>
+        <button onclick="showNextCategory()">Next</button>
+    </div>
+
+    <script>
+        const categories = ['appetizers', 'main-courses', 'desserts', 'drinks'];
+        let currentCategoryIndex = 0;
+
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.container').forEach(function(element) {
+                element.classList.add('hidden');
+            });
+            // Show the selected page
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        function showCategory(categoryId) {
+            // Hide all pages except the selected category
+            document.querySelectorAll('.container').forEach(function(element) {
+                if (element.id === 'categories' || element.id === categoryId) {
+                    element.classList.remove('hidden');
+                } else {
+                    element.classList.add('hidden');
+                }
+            });
+        }
+
+        function showNextCategory() {
+            currentCategoryIndex = (currentCategoryIndex + 1) % categories.length;
+            showCategory(categories[currentCategoryIndex]);
+        }
+
+        function showPreviousCategory() {
+            currentCategoryIndex = (currentCategoryIndex - 1 + categories.length) % categories.length;
+            showCategory(categories[currentCategoryIndex]);
+        }
+        
+        // Show home page by default
+        showPage('home');
+    </script>
+</body>
+</html>
